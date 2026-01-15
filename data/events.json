@@ -1,0 +1,20 @@
+{
+  "events": [
+    {
+      "date": "2024-10-12",
+      "matchup": "Toronto @ Montreal",
+      "summary": "Toronto blew a 3-1 lead in the final six minutes before winning in overtime.",
+      "lead": "3-1 TOR",
+      "tied_at": "2:14 remaining",
+      "source": "Manual placeholder"
+    },
+    {
+      "date": "2024-10-18",
+      "matchup": "Rangers @ Bruins",
+      "summary": "Rangers erased a two-goal deficit to force a shootout.",
+      "lead": "4-2 BOS",
+      "tied_at": "0:47 remaining",
+      "source": "Manual placeholder"
+    }
+  ]
+}
