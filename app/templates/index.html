@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Third-Period Comeback Tracker</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="ticker">
+        <span class="ticker__label">Latest flags</span>
+        <span class="ticker__items">
+          {% if events %}
+            {% for event in events[:3] %}
+              <span class="ticker__item">
+                {{ event.date }} · {{ event.matchup }} · {{ event.summary }}
+              </span>
+            {% endfor %}
+          {% else %}
+            <span class="ticker__item">No tracked games yet — scraper running soon.</span>
+          {% endif %}
+        </span>
+      </div>
+      <div class="hero">
+        <h1>Third-Period Comeback Tracker</h1>
+        <p>
+          Monitoring games where multi-goal third-period leads shrink into overtime. Data updates
+          automatically from configured sources.
+        </p>
+        <div class="hero__meta">Last updated {{ last_updated }}</div>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="card">
+        <h2>Tracked games</h2>
+        <p class="muted">Recent games meeting the comeback criteria.</p>
+        {% if events %}
+          <ul class="event-list">
+            {% for event in events %}
+              <li class="event">
+                <div class="event__header">
+                  <span class="event__date">{{ event.date }}</span>
+                  <span class="event__matchup">{{ event.matchup }}</span>
+                </div>
+                <div class="event__details">{{ event.summary }}</div>
+                <div class="event__meta">
+                  Lead: {{ event.lead }} · Tied at: {{ event.tied_at }} · Source: {{ event.source }}
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <div class="empty-state">No events loaded yet.</div>
+        {% endif %}
+      </section>
+
+      <section class="card">
+        <h2>About the project</h2>
+        <p>
+          This site tracks late third-period comebacks that force overtime or shootouts. We log
+          the lead, time of the tying goal, and contextual notes to aid analysis.
+        </p>
+        <p>
+          We do not claim any wrongdoing. The goal is to document trends for fans, journalists,
+          and analysts to review.
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Unaffiliated with the NHL, teams, or sportsbooks. Data sourced from public feeds.</p>
+    </footer>
+  </body>
+</html>
